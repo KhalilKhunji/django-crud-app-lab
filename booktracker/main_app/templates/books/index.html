@@ -11,7 +11,7 @@
 <section class="card-container">
   {% for book in books %}
     <div class="card">
-      {% comment %} <a href="{% url 'book-detail' book.id %}"> {% endcomment %}
+      <a href="{% url 'book-detail' book.id %}">
         <div class="card-content">
           <h2 class="card-title">{{ book.title }} by {{ book.author }}</h2>
           <p>Published on {{ book.date_of_publication }}</p>
