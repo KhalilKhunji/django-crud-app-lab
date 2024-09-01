@@ -11,8 +11,8 @@
     <p>Published on {{ book.date_of_publication }}</p>
     <p>ISBN: {{ book.ISBN }}</p>
     <div class="cat-actions">
-      <a href="" class="btn warn">Edit</a>
-      <a href="" class="btn danger">Delete</a>
+      <a href="{% url 'book-update' book.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'book-delete' book.id %}" class="btn danger">Delete</a>
     </div>
   </div>
 </section>

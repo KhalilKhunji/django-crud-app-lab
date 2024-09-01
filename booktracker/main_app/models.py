@@ -12,5 +12,5 @@ class Book(models.Model):
         return f'{self.title} by {self.author}'
     
     def get_absolute_url(self):
-        return reverse("book-detail", kwargs={"pk": self.id})
+        return reverse("book-detail", kwargs={'book_id': self.id})
 
