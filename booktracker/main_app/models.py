@@ -14,3 +14,14 @@ class Book(models.Model):
     def get_absolute_url(self):
         return reverse("book-detail", kwargs={'book_id': self.id})
 
+class Page(models.Model):
+    # The Page number is Charfield because some pages are not integers but alphabetical, or use Roman numerals, etc.
+    number = models.CharField(max_length=999999)
+    content = models.CharField(max_length=1000)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Page {self.number} containing {self.content}'
+    
+    class Meta:
+        ordering = ['number']
