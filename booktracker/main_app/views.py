@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .models import Book
+from django.views.generic import ListView, DetailView
+from .models import Book, Page
 from .forms import PageForm
 
 def home(request):
@@ -28,10 +29,12 @@ class BookDelete(DeleteView):
     model = Book
     success_url = '/books/'
 
-def add_page(request, book_id):
-    form = PageForm(request.POST)
-    if form.is_valid():
-        new_page = form.save(commit = False)
-        new_page.book_id = book_id
-        new_page.save()
-    return redirect('book-detail', book_id = book_id)
+class PageCreate(CreateView):
+    model = Page
+    fields = '__all__'
+
+class PageList(ListView):
+    model = Page
+
+class PageDetail(DetailView):
+    model = Page

@@ -23,5 +23,8 @@ class Page(models.Model):
     def __str__(self):
         return f'Page {self.number} containing {self.content}'
     
+    def get_absolute_url(self):
+        return reverse('page-detail', kwargs={'pk': self.id})
+    
     class Meta:
         ordering = ['number']
