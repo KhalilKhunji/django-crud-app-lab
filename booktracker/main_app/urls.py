@@ -8,7 +8,5 @@ urlpatterns = [
     path('books/create', views.BookCreate.as_view(), name='book-create'),
     path('books/<int:pk>/update/', views.BookUpdate.as_view(), name='book-update'),
     path('books/<int:pk>/delete/', views.BookDelete.as_view(), name='book-delete'),
-    path('books/<int:book_id>/pages/create', views.PageCreate.as_view(), name='page-create'),
-    path('books/<int:book_id>/pages', views.PageList.as_view(), name='page-index'),
-    path('books/<int:book_id>/pages/<int:pk>', views.PageDetail.as_view(), name='page-detail')
+    path('books/<int:book_id>/add-page/', views.add_page, name='add-page')
 ]

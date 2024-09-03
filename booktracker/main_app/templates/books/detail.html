@@ -18,7 +18,22 @@
 </section>
 <section>
   <div class="pages">
-    
+    <h3>Add a new page:</h3>
+    <form action="{% url 'add-page' book.id %}" method="post" autocomplete="off">
+      {% csrf_token %}
+      {{ page_form.as_p }}
+      <button type="submit" class="btn submit">Add a page</button>
+    </form>
+    <h1>Pages:</h1>
+    {% if book.page_set.all %}
+    <ul>
+      {% for page in book.page_set.all %}
+      <li>Page {{ page.number }}: {{ page.content }}</li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p><b>{{ book.title }}</b> has no pages added yet!</p>
+    {% endif %}
   </div>
 </section>
 {% endblock content %}
